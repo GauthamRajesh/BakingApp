@@ -147,7 +147,7 @@ public class DetailFragment extends Fragment implements ExoPlayer.EventListener 
         if((playbackState == ExoPlayer.STATE_READY) && playWhenReady){
             stateBuilder.setState(PlaybackStateCompat.STATE_PLAYING,
                     exoPlayer.getCurrentPosition(), 1f);
-        } else if((playbackState == ExoPlayer.STATE_READY)){
+        } else if((playbackState == ExoPlayer.STATE_READY)) {
             stateBuilder.setState(PlaybackStateCompat.STATE_PAUSED,
                     exoPlayer.getCurrentPosition(), 1f);
         }

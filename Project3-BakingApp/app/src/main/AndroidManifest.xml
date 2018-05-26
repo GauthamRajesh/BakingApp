@@ -25,7 +25,18 @@
         <activity android:name=".DetailFragment" />
         <activity android:name=".RecipeDetail" />
         <activity android:name=".RecipeDetailFragment" />
-        
+
+        <receiver android:name=".BakingWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/baking_widget_info" />
+        </receiver>
+        <service android:name=".BakingWidgetService" />
+        <service android:name=".WidgetService" />
     </application>
 
 </manifest>

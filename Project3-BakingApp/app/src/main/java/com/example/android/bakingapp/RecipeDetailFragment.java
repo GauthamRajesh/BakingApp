@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.android.bakingapp.utils.SharedPrefSaver;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -34,6 +36,8 @@ public class RecipeDetailFragment extends Fragment implements FragmentClickInter
         Recipe r = b.getParcelable("Recipe");
         ingredients = r.getIngredients();
         steps = r.getSteps();
+        SharedPrefSaver.saveRecipeIngredient(r.getName(), ingredients, getContext());
+        BakingWidgetService.startWidget(getContext());
         RecyclerView.LayoutManager layoutManagerSteps = new LinearLayoutManager(v.getContext());
         rvSteps.setLayoutManager(layoutManagerSteps);
         RecyclerView.LayoutManager layoutManagerIngredients = new LinearLayoutManager(v.getContext());
@@ -43,7 +47,6 @@ public class RecipeDetailFragment extends Fragment implements FragmentClickInter
         rvIngredients.setAdapter(i);
         rvSteps.setAdapter(s);
         return v;
-        //SharedPrefSaver.saveRecipeIngredient("Brownie", brownieIngredients, getContext());
     }
     @Override
     public void onClick(String description, String videoURL, int position, Context c, ArrayList<Step> steps) {
